@@ -1,0 +1,55 @@
+####################################
+###   Physical interfaces name   ###
+####################################
+topo:
+    vmx01:
+        port1: { name: ge-0/0/0,     peer: spine01,     pport: port7 }
+        port2: { name: ge-0/0/1,     peer: spine02,     pport: port7 }
+
+    vmx02:
+        port1: { name: ge-0/0/1,     peer: spine01,     pport: port8 }
+        port2: { name: ge-0/0/1,     peer: spine02,     pport: port8 }
+
+    spine01:
+        port1: { name: xe-0/0/0,     peer: leaf01,     pport: port1 }
+        port2: { name: xe-0/0/1,     peer: leaf02,     pport: port1 }
+        port3: { name: xe-0/0/2,     peer: leaf03,     pport: port1 }
+        port4: { name: xe-0/0/3,     peer: leaf04,     pport: port1 }
+        port5: { name: xe-0/0/4,     peer: leaf05,     pport: port1 }
+        port6: { name: xe-0/0/5,     peer: leaf06,     pport: port1 }
+        port7: { name: xe-0/0/6,     peer: vmx01,     pport: port1 }
+        port8: { name: xe-0/0/7,     peer: vmx02,     pport: port1 }
+
+    spine02:
+        port1: { name: xe-0/0/0,     peer: leaf01,     pport: port2 }
+        port2: { name: xe-0/0/1,     peer: leaf02,     pport: port2 }
+        port3: { name: xe-0/0/2,     peer: leaf03,     pport: port2 }
+        port4: { name: xe-0/0/3,     peer: leaf04,     pport: port2 }
+        port5: { name: xe-0/0/4,     peer: leaf05,     pport: port2 }
+        port6: { name: xe-0/0/5,     peer: leaf06,     pport: port2 }
+        port7: { name: xe-0/0/6,     peer: vmx01,     pport: port2 }
+        port8: { name: xe-0/0/7,     peer: vmx02,     pport: port2 }
+
+    leaf01:
+        port1: { name: xe-0/0/1,    peer: spine01,       pport: port1 }
+        port2: { name: xe-0/0/2,    peer: spine02,       pport: port1 }
+
+    leaf02:
+        port1: { name: xe-0/0/0,    peer: spine01,       pport: port2 }
+        port2: { name: xe-0/0/1,    peer: spine02,       pport: port2 }
+
+    leaf03:
+        port1: { name: xe-0/0/0,    peer: spine01,       pport: port3 }
+        port2: { name: xe-0/0/1,    peer: spine02,       pport: port3 }
+
+    leaf04:
+        port1: { name: xe-0/0/0,    peer: spine01,       pport: port4 }
+        port2: { name: xe-0/0/1,    peer: spine02,       pport: port4 }
+
+    leaf05:
+        port1: { name: xe-0/0/0,    peer: spine01,       pport: port5 }
+        port2: { name: xe-0/0/1,    peer: spine02,       pport: port5 }
+
+    leaf06:
+        port1: { name: xe-0/0/0,    peer: spine01,       pport: port6 }
+        port2: { name: xe-0/0/1,    peer: spine02,       pport: port6 }

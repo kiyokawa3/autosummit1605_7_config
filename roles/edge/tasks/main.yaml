@@ -1,0 +1,5 @@
+---
+- name: Building NNI configuration
+  template: >
+    src=main.conf.j2
+    dest={{ build_dir }}/int-nni.conf.part

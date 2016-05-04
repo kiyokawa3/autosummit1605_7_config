@@ -1,0 +1,4 @@
+- docker_path: juniper
+- docker_name: jnc
+- syslog_internal_port: 5160
+- syslog_external_port: 5160

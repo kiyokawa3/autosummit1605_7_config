@@ -1,0 +1,20 @@
+---
+- name: Setup initial config
+  hosts: all
+  connection: local
+  gather_facts: no
+  roles:
+    - Juniper.junos
+  tasks:
+    - name: Creating config
+      template: src=base_junos.j2 dest=/tmp/{{ inventory_hostname }}.conf
+
+    - name: Upload Node MNG configuration using netconify by console if NETCONF FAIL
+      junos_install_config:
+        host: "{{ junos_host }}"
+        user: "{{ ansible_ssh_user }}"
+        passwd: "{{ qfx_default_pwd }}"
+        console: "--port={{ tty }}"
+        file: /tmp/{{ inventory_hostname }}.conf
+        overwrite: yes
+        logfile: "log/{{ inventory_hostname }}.log"

@@ -1,0 +1,12 @@
+interfaces {
+{% for int in nni %}
+    {{ int.interface }} {
+        unit 0 {
+            description {{ int.description }};
+            family inet {
+                address {{ int.ipaddress }};
+            }
+        }
+    }
+{% endfor %}
+}

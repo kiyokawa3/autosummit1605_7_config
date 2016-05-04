@@ -1,0 +1,11 @@
+---
+- name: Create and apply configuration for Edge
+  hosts: edge
+  connection: local
+  gather_facts: no
+  roles:
+    - common
+    - edge
+    - junos-ebgp
+    - jvision
+    - build-config

@@ -1,0 +1,23 @@
+interfaces {
+{% for int in nni %}
+    {{ int.interface }} {
+        unit 0 {
+            family inet {
+                address {{ int.ipaddress }};
+            }
+        }
+    }
+{% endfor %}
+}
+protocols {
+    ospf {
+        area 0.0.0.7 {
+            interface lo0.0 passive;
+{% for int in nni%}
+            interface {{ int.interface }} {
+              interface-type p2p;
+    }
+{% endfor %}
+        }
+    }
+}

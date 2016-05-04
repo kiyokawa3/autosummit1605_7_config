@@ -1,0 +1,6 @@
+---
+- name: Configure IP for RE-PFE
+  template: >
+    src=main.conf.j2
+    dest={{ build_dir }}/vqfx.conf.part
+

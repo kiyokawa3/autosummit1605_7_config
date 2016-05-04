@@ -1,0 +1,57 @@
+---
+- name: Execute Test for spine
+  hosts: spine
+  connection: local
+  gather_facts: no
+  roles:
+    - Juniper.junos
+  tasks:
+    - name: "Check Golden Config"
+      junos_jsnapy:
+        host: "{{ junos_host }}"
+        port: "{{ netconf_port }}"
+        user: "{{ ansible_ssh_user }}"
+        passwd: "{{ ansible_ssh_pass }}"
+        action: snapcheck
+        test_files: "/home/lab/jsnapy-template/spine_template.yml"
+      register: result
+
+    - debug: var=result
+
+- name: Execute Test for vmx
+  hosts: mx
+  connection: local
+  gather_facts: no
+  roles:
+    - Juniper.junos
+  tasks:
+    - name: "Check Golden Config"
+      junos_jsnapy:
+        host: "{{ junos_host }}"
+        port: "{{ netconf_port }}"
+        user: "{{ ansible_ssh_user }}"
+        passwd: "{{ ansible_ssh_pass }}"
+        action: snapcheck
+        test_files: "/home/lab/jsnapy-template/mx_template.yml"
+      register: result
+
+    - debug: var=result
+
+- name: Execute Test for leaf
+  hosts: leaf
+  connection: local
+  gather_facts: no
+  roles:
+    - Juniper.junos
+  tasks:
+    - name: "Check Golden Config"
+      junos_jsnapy:
+        host: "{{ junos_host }}"
+        port: "{{ netconf_port }}"
+        user: "{{ ansible_ssh_user }}"
+        passwd: "{{ ansible_ssh_pass }}"
+        action: snapcheck
+        test_files: "/home/lab/jsnapy-template/leaf_template.yml"
+      register: result
+
+    - debug: var=result

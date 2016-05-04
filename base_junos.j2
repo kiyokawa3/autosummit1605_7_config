@@ -1,0 +1,27 @@
+#jinja2:lstrip_blocks: True
+system {
+    root-authentication {
+        encrypted-password "{{ root_hash }}"; ## SECRET-DATA
+    }
+    services {
+        ssh;
+        netconf {
+            ssh;
+        }
+    }
+}
+interfaces {
+    {{ mgmt_port }} {
+        unit 0 {
+            family inet {
+              address {{ junos_host }}/{{ mgmt_sub_mask }};
+            }
+        }
+    }
+}
+routing-options {
+    static {
+        route 0.0.0.0/0 next-hop {{ mgmt_sub_gw }};
+    }
+}
+

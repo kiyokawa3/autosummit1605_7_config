@@ -1,0 +1,11 @@
+---
+- hosts: 127.0.0.1
+  connection: local
+  gather_facts: no
+  tasks:
+    - name: Start Juniper Container
+      local_action: shell docker -d -t -p 5160:5160/udp -p 1883:1883 -i juniper/jnc /sbin/my_init -- bash -l
+#      local_action: docker
+#        name: "jnc-wayne"
+#        image: "juniper/jnc"
+#        state: reloaded

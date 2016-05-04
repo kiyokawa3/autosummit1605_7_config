@@ -1,0 +1,7 @@
+---
+- name: Create and apply configuration for Jvision on Edge
+  hosts: edge
+  connection: local
+  gather_facts: no
+  roles:
+    - jvision

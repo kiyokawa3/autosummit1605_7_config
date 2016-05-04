@@ -1,0 +1,35 @@
+interfaces {
+{% for int in servers %}
+    {{ int.name }} {
+        unit 0 {
+            family inet {
+                address {{ int.ipaddress }}/{{int.mask}};
+            }
+        }
+    }
+{% endfor %}
+}
+
+policy-options {
+    policy-statement bgp-ipclos-in {
+        term server {
+            from {
+                route-filter 10.70.0.0/16 orlonger;
+            }
+            then accept;
+        }
+    }
+    policy-statement bgp-ipclos-out {
+        term server {
+            from {
+                protocol direct;
+                route-filter 10.70.0.0/16 orlonger;
+            }
+            then {
+                next-hop self;
+                accept;
+            }
+        }
+    }
+}
+

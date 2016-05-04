@@ -1,0 +1,17 @@
+underlay:
+    local:
+        asn: 60016
+    neighbors:
+## spine01
+      - interface: "{{ topo[inventory_hostname].port1.name }}"
+        name: "{{ topo[inventory_hostname].port1.peer }}"
+        asn: 60014
+        peer_ip: "{{ p2p.link1.1}}"
+        local_ip: "{{ p2p.link1.2}}"
+## spine02
+      - interface: "{{ topo[inventory_hostname].port2.name }}"
+        name: "{{ topo[inventory_hostname].port2.peer }}"
+        asn: 60015
+        peer_ip: "{{ p2p.link5.1}}"
+        local_ip: "{{ p2p.link5.2}}"
+        

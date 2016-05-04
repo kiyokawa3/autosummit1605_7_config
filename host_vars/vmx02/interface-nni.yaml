@@ -1,0 +1,7 @@
+nni:
+  - interface: ge-0/0/3
+    description: "NNI VCF"
+    ipaddress: 10.70.253.2/30
+  - interface: ge-0/0/4
+    description: "JTI"
+    ipaddress: 192.168.14.3/24

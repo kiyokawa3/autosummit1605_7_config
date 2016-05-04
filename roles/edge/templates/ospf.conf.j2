@@ -1,0 +1,17 @@
+routing-options {
+    router-id {{ host.loopback.ip }}
+}
+
+protocols {
+    ospf {
+        area 0.0.0.7 {
+            interface lo.0 passive
+{% for interface in ospf.interface %}
+            interface {{ interface }} {
+              interface-type p2p;
+    }
+{% endfor %}
+        }
+    }
+}
+Status API Training Shop Blog About

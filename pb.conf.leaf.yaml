@@ -1,0 +1,11 @@
+---
+- name: Create and apply configuration for Leaf
+  hosts: leaf
+  connection: local
+  gather_facts: no
+  roles:
+    - common
+    - vqfx-pfe
+    - junos-ebgp
+    - server
+    - build-config

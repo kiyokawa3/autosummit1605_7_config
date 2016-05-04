@@ -1,0 +1,26 @@
+services {
+	analytics {                                                                
+	    sensor cpu-mem {                                                       
+    	        server-name jvision-server;                                        
+        	export-name export-common;                                         
+        	polling-interval 10;                                          
+        	resource /junos/system/linecard/cpu/memory/;                       
+    	    }                                                                      
+    	    sensor npu-mem {                                                       
+        	server-name jvision-server;                                        
+        	export-name export-common;                                         
+        	polling-interval 10;                                          
+        	resource /junos/system/linecard/npu/memory/;                       
+    	    }
+	    sensor interface {
+        	server-name jvision-server;
+        	export-name export-common;
+        	polling-interval 10;
+        	resource /junos/system/linecard/interface/;
+    	    }  
+    	    streaming-server jvision-server {
+        	remote-address {{ jvision.jtiserver_address }};
+        	remote-port 50000;    
+    	    }   
+	}
+}

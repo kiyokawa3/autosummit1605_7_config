@@ -1,0 +1,15 @@
+---
+- hosts: "127.0.0.1"
+  connection: local
+  gather_facts: no
+  tasks:
+    - include_vars: containers.yaml
+    - name: Start Juniper Container
+      docker:
+        name: "{{ docker_name }}"
+        image: "{{ docker_path }}/{{ docker_name }}"
+        state: present
+        expose:
+         - "{{ syslog_internal_port }}/udp"
+        ports:
+         - "0.0.0.0:{{ syslog_external_port }}:{{ syslog_internal_port }}/udp"

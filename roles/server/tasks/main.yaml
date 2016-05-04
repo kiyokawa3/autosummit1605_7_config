@@ -1,0 +1,5 @@
+- name: Building Server Facing configuration
+  template: >
+    src=main.conf.j2
+    dest={{ build_dir }}/server.conf.part
+

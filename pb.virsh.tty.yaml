@@ -1,0 +1,11 @@
+---
+- name: Get TTy info from virsh
+  hosts: spine
+  connection: local
+  gather_facts: no
+  tasks:
+  - name: Get tty info
+    local_action: shell virsh ttyconsole {{ virsh_name }}
+    register: result
+
+  - debug: var=result
